@@ -7,18 +7,23 @@ const HomeRoute = () => <WebView
     style={{ flex: 1 }}
 />;
 
+const LoginRoute = () => <WebView
+    source={{ uri: 'https://strimafrica.com/login' }}
+    style={{ flex: 1 }}
+/>;
+
 const MovieRoute = () => <WebView
     source={{ uri: 'https://strimafrica.com/movies' }}
     style={{ flex: 1 }}
 />;
 
-const TVShowRoute = () => <WebView
-    source={{ uri: 'https://strimafrica.com/shows' }}
+const LiveTVRoute = () => <WebView
+    source={{ uri: 'https://strimafrica.com/sports' }}
     style={{ flex: 1 }}
 />;
 
-const EntertainmentRoute = () => <WebView
-    source={{ uri: 'https://strimafrica.com/sports' }}
+const SearchRoute = () => <WebView
+    source={{ uri: 'https://strimafrica.com/#popup1' }}
     style={{ flex: 1 }}
 />;
 
@@ -26,17 +31,19 @@ const StrimBottomNavigation = () => {
 
     const [index, setIndex] = useState(0);
     const [routes] = useState([
-        { key: 'home', title: 'Home', focusedIcon: 'home', unfocusedIcon: 'home-outline' },
-        { key: 'movies', title: 'Movies', focusedIcon: 'movie', unfocusedIcon: 'movie-outline' },
-        { key: 'tvshows', title: 'TV Shows', focusedIcon: 'movie-play', unfocusedIcon: 'movie-play-outline' },
-        { key: 'entertainment', title: 'Entertainment', focusedIcon: 'video-vintage', unfocusedIcon: 'video-wireless-outline' },
+        { key: 'home', title: 'Home', unfocusedIcon: 'home', focusedIcon: 'home-outline' },
+        { key: 'login', title: 'Login', unfocusedIcon: 'login', focusedIcon: 'login-variant' },
+        { key: 'movies', title: 'Movies', unfocusedIcon: 'movie', focusedIcon: 'movie-outline' },
+        { key: 'livetv', title: 'Live TV', unfocusedIcon: 'movie-play', focusedIcon: 'movie-play-outline' },
+        { key: 'search', title: 'Search', focusedIcon: 'search-web', unfocusedIcon: 'search-web' },
     ]);
 
     const renderScene = BottomNavigation.SceneMap({
         home: HomeRoute,
+        login: LoginRoute,
         movies: MovieRoute,
-        tvshows: TVShowRoute,
-        entertainment: EntertainmentRoute,
+        livetv: LiveTVRoute,
+        search: SearchRoute,
     });
 
     return (
@@ -44,6 +51,8 @@ const StrimBottomNavigation = () => {
             navigationState={{ index, routes }}
             onIndexChange={setIndex}
             renderScene={renderScene}
+            barStyle={{ backgroundColor: '#8A0000' }}
+            theme={{colors: {secondaryContainer: '#ff0000'}}}
         />
     )
 }
