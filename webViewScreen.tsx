@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { BackHandler, AppState, View, Text, Alert } from 'react-native';
+import { BackHandler, View, Text, Alert } from 'react-native';
 import { WebView } from 'react-native-webview';
 import NetInfo from '@react-native-community/netinfo';
+import StrimBottomNavigation from './strim_bottom_navigation';
 
 const WebViewScreen = () => {
-  const WEBVIEW_REF = useRef(null);
+  const WEBVIEW_REF = useRef<WebView | null>(null);
   const [canGoBack, setCanGoBack] = useState(false);
   const [isConnected, setIsConnected] = useState(true);
 
@@ -24,7 +25,7 @@ const WebViewScreen = () => {
     };
   }, [canGoBack]);
 
-  const onNavigationStateChange = (navState) => {
+  const onNavigationStateChange = (navState: any) => {
     setCanGoBack(navState.canGoBack);
   };
 
@@ -55,11 +56,7 @@ const WebViewScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       {isConnected ? (
-        <WebView
-          source={{ uri: 'https://strimafrica.com' }}
-          ref={WEBVIEW_REF}
-          onNavigationStateChange={onNavigationStateChange}
-        />
+        <StrimBottomNavigation />
       ) : (
         <Text style={{ textAlign: 'center', justifyContent: 'center', alignItems: 'center' }}>No internet connection</Text>
       )}

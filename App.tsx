@@ -11,6 +11,8 @@ import {
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import WebViewScreen from './webViewScreen';
+import { PaperProvider } from 'react-native-paper';
+import StrimBottomNavigation from './strim_bottom_navigation';
 
 
 function App(): JSX.Element {
@@ -23,8 +25,12 @@ function App(): JSX.Element {
   return (
     // <SafeAreaView style={backgroundStyle}>
       <>
-        <WebViewScreen />
+        <PaperProvider>
+          <WebViewScreen />
+        </PaperProvider>
+        
       </>
+
   );
 }
 
