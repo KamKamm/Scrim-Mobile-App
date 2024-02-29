@@ -46,13 +46,18 @@ const StrimBottomNavigation = () => {
         search: SearchRoute,
     });
 
+    
+
     return (
         <BottomNavigation
             navigationState={{ index, routes }}
             onIndexChange={setIndex}
+            activeColor="#fff"
+            inactiveColor="#f1f1f1"
             renderScene={renderScene}
-            barStyle={{ backgroundColor: '#8A0000' }}
-            theme={{colors: {secondaryContainer: '#ff0000'}}}
+            barStyle={{ backgroundColor: '#FF0000' }}
+            theme={{colors: {secondaryContainer: '#444', }}}
+            
         />
     )
 }
